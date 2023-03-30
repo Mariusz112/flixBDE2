@@ -1,0 +1,346 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+html {
+    background-color: snow;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    min-width: 300px;
+}
+
+button {
+    border: none;
+}
+
+.navbar {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: purple;
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    z-index: 2;
+}
+
+.logo-button {
+    font-size: 1rem;
+    margin: 10px 4px 10px 50px;
+    padding-top: 3px;
+    padding-right: auto;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    background: purple;
+    color: #eeeeee;
+    color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(12,12,75,1) 35%, rgba(0,212,255,1) 100%);
+    letter-spacing: 4mm;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.strong {
+    letter-spacing: 2mm;
+}
+
+a {
+    color: #eeeeee;
+}
+
+.comeback:link,
+.comeback:visited,
+.comeback:hover,
+.comeback:active {
+    text-decoration: none;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+    border-radius: 5px;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    padding: 4px 10px 4px 10px;
+}
+
+.navbar-links li:hover {
+    transition-duration: 0.3s;
+    background-color: rgb(206, 206, 206);
+}
+
+.user_avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.notifications {
+    width: 18px;
+    height: 18px;
+    background-color: crimson;
+    top: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 100%;
+    color: white;
+}
+
+.user_avatar_button {
+    cursor: pointer;
+}
+
+.image-box {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("images/bestSeriesEver.png");
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-middle-part-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-middle-part-container .middle-part-section1 {
+    width: 100%;
+    margin-top: 58px;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-middle-part-container .middle-part-section1 #new-products {
+    text-align: center;
+    font-weight: 700;
+}
+
+.main-middle-part-container .middle-part-section1 .middle-part-container-child2 {
+    margin-top: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-middle-part-container .middle-part-section1 .middle-part-container-child2 button {
+    margin: 20px;
+    font-size: 15px;
+    border: 1px solid #bfbfbf;
+    padding: 15px;
+    background: snow;
+}
+
+.main-middle-part-container .middle-part-section1 .middle-part-container-child2 button:hover {
+    border: solid black 1px;
+    cursor: pointer;
+}
+
+.products-container {
+    margin-top: 133px;
+    font-size: 30px;
+    margin: auto 25px auto 25px;
+}
+
+.products-title {
+    font-weight: 700;
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 120px;
+}
+
+.products-list {
+    display: flex;
+    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+div.products-list a {
+    margin-right: 5vh;
+    margin-left: 2vh;
+}
+
+div.products-list div {
+    margin-left: 4vh;
+}
+
+.product-name {
+    font-size: 15px;
+    margin: 0;
+}
+
+.product-description {
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.product-border-hover {
+    border: 1px solid white;
+}
+
+.product-border-hover:hover {
+    border: 1px solid black;
+}
+
+.footer {
+    background: rgb(50, 50, 50);
+    width: 100vw;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.footer-title {
+    grid-column: 1 / -1;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 700;
+    padding: 80px 0 60px 0;
+    border-top: 1px solid rgb(150, 150, 150);
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+.grid-st-nd-columns {
+    grid-row: 2/ span 2;
+    margin-top: 60px;
+}
+
+.img-container {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 15px;
+    border: 5px solid;
+    border-radius: 50%;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-container1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.social-container2 {
+    width: 35px;
+    height: 35px;
+    margin: 0 5px 2px;
+    border: 2px solid;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.fb:hover {
+    color: rgb(98, 192, 255);
+}
+
+.ig:hover {
+    color: rgb(172, 9, 172);
+}
+
+.snap:hover {
+    color: yellow;
+}
+.yt:hover {
+    color: red;
+}
+.find {
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+.footer-all-rights-reserved {
+    padding-top: 25px;
+    font-size: 12px;
+    grid-column: 1 / -1;
+    border-top: 1px solid rgb(150, 150, 150);
+}
+.social_inline {
+    display: flex;
+    justify-content: center;
+}
+.gallery-container{
+    display: flex;
+    margin-top: 50px;
+    cursor: pointer;
+}
+.gal{
+   aspect-ratio: 1/2;
+   opacity:0.5;
+   object-fit: cover;
+}
+.gal:hover{
+    opacity:1;
+    transition-duration: 0.5s;
+    transform: scale(1.2);
+    z-index: 1;
+}
+/*@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toggle-button {
+        display: flex;
+    }
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+    .navbar-links ul li {
+        text-align: center;
+    }
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+    .navbar-links.active {
+        display: flex;
+    }
+}*/

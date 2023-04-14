@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { LoginComponent } from './login/login.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Zeto';
+}
+export class MyComponent {
+  imageUrl = 'assets/test.jpg';
 }

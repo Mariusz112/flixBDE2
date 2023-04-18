@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+    console.log('LoginComponent constructor');
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('LoginComponent ngOnInit');
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -24,7 +27,19 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-  }
+    const formData = new FormData();
+    formData.append('email', this.loginForm.value.email);
+    formData.append('password', this.loginForm.value.password);
 
+    this.http.post('/api/login', formData).subscribe(
+      (response) => {
+        console.log(response);
+        // handle successful response from server here
+      },
+      (error) => {
+        console.log(error);
+        // handle error response from server here
+      }
+    );
+  }
 }

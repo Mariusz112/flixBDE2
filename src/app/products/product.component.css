@@ -1,0 +1,29 @@
+.product-border-hover {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .product-border-hover:hover {
+    border-color: #999;
+  }
+  
+  .product {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .product-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .product-description {
+    font-size: 14px;
+    font-style: italic;
+    color: #666;
+  }

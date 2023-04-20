@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Logowanie użytkownika</title>
-	<link rel="stylesheet" type="text/css" href="login.component.css">
+    <meta charset="UTF-8">
+    <title>Logowanie użytkownika</title>
+    <link rel="stylesheet" type="text/css" href="login.component.css">
 </head>
 <body>
-	<div class="login-box">
-		<h2>Logowanie</h2>
-		<form>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Nazwa użytkownika</label>
-			</div>
-			<div class="user-box">
-				<input type="password" name="" required="">
-				<label>Hasło</label>
-			</div>
-			<div class="space-between">
-				<a>Zapomniałeś hasła?</a>
-				<a>Rejestracja</a>
-			</div>
-			<div class="centerer">
-				<a class="login-button" href="#">
-					Zaloguj się
-				</a>
-			</div>
-		</form>
-	</div>
+
+    <nav class="navbar">
+		
+    </nav>
+
+    <div class="image-box">
+      <div class="login-container">
+        <div class="login-form-container">
+          <h2>Login</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email">
+            <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+              <div *ngIf="loginForm.controls['email'].errors?.['required']">Email is required.</div>
+              <div *ngIf="loginForm.controls['email'].errors?.['email']">Invalid email address.</div>
+            </div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password">
+            <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+              <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required.</div>
+              <div *ngIf="loginForm.controls['password'].errors?.['minlength']">Password must be at least 6 characters long.</div>
+            </div>
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+      
+    
 </body>
 </html>

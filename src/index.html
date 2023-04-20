@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="https://kit.fontawesome.com/b7d2920142.js" crossorigin="anonymous"></script>
-    <script src="script.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
     <title>BDEflix</title>
 </head>
 
@@ -20,7 +20,7 @@
         </form>
         <div class="navbar-links">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#">TV Shows</a></li>
                 <li><a href="#">Movie</a></li>
                 <li><a href="#">My List</a></li>
@@ -28,7 +28,10 @@
             </ul>
         </div>
         <div class="nav-right-section">
-            <a class="login-button" routerLink="app/login">Login</a>
+            <a class="login-button" href="/login">
+                <button class="btn btn-primary">Login</button>
+            </a>
+            
             <form action="#" class="user_avatar">
                 <button class="user_avatar_button">
                     <img src="images/user_avatar.png" alt="xd">
@@ -37,10 +40,11 @@
             </form>
         </div>
     </nav>
+    
     <div class="image-box">
 
     </div>
-
+    <app-root></app-root>
     <div class="main-middle-part-container">
         <div class="middle-part-section1">
             <div id="new-products">
@@ -60,7 +64,7 @@
             <div class="products-list">
                     <div class="product-border-hover">
                         <a class="product" href="https://google.com">
-                            <img src="images/">
+                            <img src="assets/series1.jpg" alt="My Test Image">
                         </a>
                         <div class="product-name">
                                 series1
@@ -70,7 +74,7 @@
 
                         <div class="product-border-hover">
                         <a class="product" href="https://google.com">
-                            <img src="images/">
+                            <img src="assets/series2.jpg" alt="My Test Image">
                         </a>
                         <div class="product-name">
                             series2
@@ -78,7 +82,7 @@
                     </div>
                     <div class="product-border-hover">
                         <a class="product" href="https://google.com">
-                            <img src="images/">
+                            <img src="assets/series3.jpg" alt="My Test Image">
                         </a>
                         <div class="product-name">
                             series3
@@ -89,7 +93,7 @@
                     </div>
                     <div class="product-border-hover">
                         <a class="product" href="https://google.com">
-                            <img src="images/">
+                            <img src="assets/series4.jpg" alt="My Test Image">
                         </a>
                         <div class="product-name">
                             series4
@@ -112,7 +116,7 @@
         <div class="products-list">
             <div class="product-border-hover">
                     <a class="product" href="https://google.com">
-                        <img src="images/">
+                        <img src="assets/series1.jpg" alt="My Test Image">
                     </a>
                     <div class="product-name">
                             series1
@@ -124,7 +128,7 @@
 
                     <div class="product-border-hover">
                     <a class="product" href="https://google.com">
-                        <img src="images/">
+                        <img src="assets/series2.jpg" alt="My Test Image">
                     </a>
                     <div class="product-name">
                         series2
@@ -132,7 +136,7 @@
                 </div>
                 <div class="product-border-hover">
                     <a class="product" href="https://google.com">
-                        <img src="images/">
+                        <img src="assets/series3.jpg" alt="My Test Image">
                     </a>
                     <div class="product-name">
                         series3
@@ -140,7 +144,7 @@
                 </div>
                 <div class="product-border-hover">
                     <a class="product" href="https://google.com">
-                        <img src="images/">
+                        <img src="assets/series4.jpg" alt="My Test Image">
                     </a>
                     <div class="product-name">
                         series4

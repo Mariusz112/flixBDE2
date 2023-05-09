@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
+import { Series1Component } from './series1/series1.component';
+import { EpisodeComponent } from './episode/episode.component';
 
 
 
@@ -18,6 +21,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegistrationComponent,
     ComponentNameComponent,
+    TvShowsComponent,
+    Series1Component,
+    EpisodeComponent,
     
   ],
   imports: [

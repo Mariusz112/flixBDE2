@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { Series1Component } from './series1/series1.component';
 import { EpisodeComponent } from './episode/episode.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -24,6 +25,7 @@ import { EpisodeComponent } from './episode/episode.component';
     TvShowsComponent,
     Series1Component,
     EpisodeComponent,
+    ForgotPasswordComponent,
     
   ],
   imports: [

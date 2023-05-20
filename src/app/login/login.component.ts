@@ -9,17 +9,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  message: string;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
-    console.log('LoginComponent constructor');
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+    this.message = ''; // Initialize the 'message' property
   }
 
   ngOnInit() {
-    console.log('LoginComponent ngOnInit');
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -27,17 +27,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = new FormData();
-    formData.append('email', this.loginForm.value.email);
-    formData.append('password', this.loginForm.value.password);
+    const loginData = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
 
-    this.http.post('/api/login', formData).subscribe(
+    console.log('Submitting login form with data:', loginData);
+
+    this.http.post<any>('http://localhost:8080/api/authentication/signin', loginData).subscribe(
       (response) => {
-        console.log(response);
+        console.log('Login response:', response);
+        this.message = 'Login successful!'; // Set success message
         // handle successful response from server here
       },
       (error) => {
-        console.log(error);
+        console.log('Login error:', error);
+        this.message = 'Invalid email or password.'; // Set error message
         // handle error response from server here
       }
     );

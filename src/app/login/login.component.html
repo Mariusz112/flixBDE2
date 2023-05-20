@@ -9,35 +9,32 @@
 	<div class="login-box">
 		<h2>Logowanie</h2>
 		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-			<div class="user-box">
-				
+			<div class="user-box">				
         <input type="email" id="email" placeholder="Email:" formControlName="email">
-            <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
-              <div *ngIf="loginForm.controls['email'].errors?.['required']">Email is required.</div>
-              <div *ngIf="loginForm.controls['email'].errors?.['email']">Invalid email address.</div>
-            </div>
+        <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+          <div *ngIf="loginForm.controls['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="loginForm.controls['email'].errors?.['email']">Invalid email address.</div>
+        </div>
 			</div>
-			<div class="user-box">
-			
-            <input type="password" id="password" placeholder="Password:" formControlName="password">
-            <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
-              <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required.</div>
-              <div *ngIf="loginForm.controls['password'].errors?.['minlength']">Password must be at least 6 characters long.</div>
-            </div>
+			<div class="user-box">			
+        <input type="password" id="password" placeholder="Password:" formControlName="password">
+        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+          <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required.</div>
+          <div *ngIf="loginForm.controls['password'].errors?.['minlength']">Password must be at least 6 characters long.</div>
+        </div>
 			</div>
       <div class="space-between">
-        <a routerLink="/forgot-password">Zapomniałeś hasła?</a>
+        <a routerLink="/forgot-password">Zapomniałeś hasła?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a routerLink="/registration">Rejestracja</a>
       </div>
       
 			<div class="centerer">
 				<a class="login-button" href="#">
-					<button  [disabled]="!loginForm.valid">Zaloguj się</button>
+					<button [disabled]="!loginForm.valid">Zaloguj się</button>
 				</a>
-				
 			</div>
-
 		</form>
+    <div class="message" *ngIf="message">{{ message }}</div>
 	</div>
 </body>
 </html>

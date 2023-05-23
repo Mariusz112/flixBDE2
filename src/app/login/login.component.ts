@@ -34,9 +34,10 @@ export class LoginComponent implements OnInit {
 
     console.log('Submitting login form with data:', loginData);
 
-    this.http.post<any>('http://localhost:8080/api/authentication/signin', loginData).subscribe(
+    this.http.post('http://localhost:8080/api/authentication/signin', loginData).subscribe(
       (response) => {
         console.log('Login response:', response);
+        
         this.message = 'Login successful!'; // Set success message
         // handle successful response from server here
       },

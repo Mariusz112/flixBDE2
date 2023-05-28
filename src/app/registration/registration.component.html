@@ -8,18 +8,18 @@
 <body>
   <div class="register-box">
     <h2>Rejestracja</h2>
-    <form (submit)="registerUser()">
-
+    <form [formGroup]="registrationForm" (submit)="registerUser()">
+  
       <div class="user-box">
-        <input type="text" name="email" required [(ngModel)]="email">
+        <input type="text" formControlName="email" required>
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" name="password" required [(ngModel)]="password">
+        <input type="password" formControlName="password" required>
         <label>Hasło</label>
       </div>
       <div class="user-box">
-        <input type="password" name="confirmPassword" required [(ngModel)]="confirmPassword">
+        <input type="password" formControlName="confirmPassword" required>
         <label>Powtórz hasło</label>
       </div>
       <a routerLink="/login">Masz już konto? Zaloguj</a>
@@ -28,5 +28,6 @@
       </div>
     </form>
   </div>
+  
 </body>
 </html>

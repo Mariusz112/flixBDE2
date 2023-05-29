@@ -3,18 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component'; 
+import { RegistrationComponent } from './registration/registration.component';
 import { ComponentNameComponent } from './component-name/component-name.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { Series1Component } from './series1/series1.component';
 import { EpisodeComponent } from './episode/episode.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
+import { AuthInterceptor } from './auth.interceptor';
+
+// Define routes for your application
+const appRoutes: Routes = [
+  // Define your routes here
+];
 
 @NgModule({
   declarations: [
@@ -25,8 +30,7 @@ import { RouterModule } from '@angular/router';
     TvShowsComponent,
     Series1Component,
     EpisodeComponent,
-    ForgotPasswordComponent,
-    
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,12 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    // Add the following provider for intercepting HTTP requests
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,6 +15,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthInterceptor } from './auth.interceptor';
+import { ProfileComponent } from './profile/profile.component';
 
 // Define routes for your application
 const appRoutes: Routes = [
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     TvShowsComponent,
     Series1Component,
     EpisodeComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

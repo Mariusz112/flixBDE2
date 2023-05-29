@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    this.message = ''; // Initialize the 'message' property
+    this.message = '';
   }
 
   ngOnInit() {
@@ -43,16 +45,16 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         console.log('Login response:', response);
 
-        // Store the user session in the AuthService
         this.authService.setUserSession(response);
 
-        this.message = 'Login successful!'; // Set success message
-        // handle successful response from server here
+        this.message = 'Login successful!';
+
+        // Navigate to the profile page
+        this.router.navigateByUrl('/profile');
       },
       (error) => {
         console.log('Login error:', error);
-        this.message = 'Invalid email or password.'; // Set error message
-        // handle error response from server here
+        this.message = 'Invalid email or password.';
       }
     );
   }

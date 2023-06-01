@@ -8,7 +8,7 @@ import { Film } from '../models/film.model';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
-  films: Film[] = []; // Corrected property name to 'films'
+  films: Film[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class MovieComponent implements OnInit {
   getFilms() {
     this.http.get<Film[]>('http://localhost:8080/api/film/all').subscribe(
       (response: Film[]) => {
-        this.films = response; // Corrected property name to 'films'
+        this.films = response;
       },
       (error) => {
         console.log('Error:', error);

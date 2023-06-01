@@ -10,7 +10,7 @@ import { Film } from '../models/film.model';
 export class AdminComponent {
   newFilm: Film = {
     id: 0,
-    title: '0',
+    title: '',
     director: '',
     genre: '',
     duration: 0,
@@ -27,14 +27,14 @@ export class AdminComponent {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   
     const requestBody = {
-      title: 'implement extensible schemas',
-      duration: 7422,
-      description: 'Wonder each design moment quickly total turn. Tend claim listen short. Form half ok computer set.',
-      releaseDate: '2012-04-23',
-      poster: './',
-      director: 'Caroline Krueger',
-      actorsCast: ['Actor1', 'Actor2'],
-      genreTag: ['Romance', 'Comedy']
+      title: this.newFilm.title,
+      duration: this.newFilm.duration,
+      description: this.newFilm.description,
+      releaseDate: this.newFilm.releaseDate,
+      poster: this.newFilm.poster,
+      director: this.newFilm.director,
+      actorsCast: this.newFilm.actorsCast.split(',').map(actor => actor.trim()),
+      genreTag: this.newFilm.genreTag.split(',').map(genre => genre.trim())
     };
   
     this.http.post('http://localhost:8080/api/film', requestBody, { headers }).subscribe(
@@ -43,7 +43,7 @@ export class AdminComponent {
         // Reset the form
         this.newFilm = {
           id: 0,
-          title: '0',
+          title: '',
           director: '',
           genre: '',
           duration: 0,

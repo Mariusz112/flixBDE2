@@ -27,9 +27,14 @@
       <label for="actorsCast">Actors/Cast</label>
       <input type="text" class="form-control" id="actorsCast" required [(ngModel)]="newFilm.actorsCast" name="actorsCast">
     </div>
+    
     <div class="form-group">
       <label for="genreTag">Genre</label>
       <input type="text" class="form-control" id="genreTag" required [(ngModel)]="newFilm.genreTag" name="genreTag">
+    </div>
+    <div class="form-group">
+      <label for="Path">Path</label>
+      <input type="text" class="form-control" id="path" required [(ngModel)]="newFilm.path" name="path">
     </div>
     <button type="submit" class="btn btn-primary">Add Film</button>
   </form>

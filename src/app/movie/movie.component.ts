@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Film } from '../models/film.model';
 
@@ -10,7 +11,7 @@ import { Film } from '../models/film.model';
 export class MovieComponent implements OnInit {
   films: Film[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
     this.getFilms();
@@ -25,5 +26,9 @@ export class MovieComponent implements OnInit {
         console.log('Error:', error);
       }
     );
+  }
+
+  redirectToMovieDetail(id: number) {
+    this.router.navigate(['/movie-detail', id]);
   }
 }

@@ -9,6 +9,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component'; // Import the ProfileComponent
 import { MovieComponent } from './movie/movie.component';
 import { AdminComponent } from './admin/admin.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent }, // Add the route for the ProfileComponent
   { path: 'movie', component: MovieComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'movie/:id', component: MovieDetailComponent },
+  { path: 'movie-detail/:id', component: MovieDetailComponent }
 ];
 
 @NgModule({

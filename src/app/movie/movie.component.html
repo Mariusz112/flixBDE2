@@ -1,7 +1,9 @@
-<div *ngIf="films.length > 0" class="movie-grid">
-  <div *ngFor="let film of films" class="movie-item">
+<div class="movie-grid">
+  <div *ngFor="let film of films" class="movie-item" (click)="redirectToMovieDetail(film.id)">
     <div class="movie-content">
-      <img [src]="film.poster" alt="Film Poster" class="movie-image">
+      <a [routerLink]="['/movie-detail', film.id]">
+        <img [src]="film.poster" alt="Film Poster" class="movie-image">
+      </a>
       <h3 class="movie-title">{{ film.title }}</h3>
     </div>
     <!-- Add additional film properties you want to display -->
@@ -10,9 +12,3 @@
 <div *ngIf="films.length === 0">
   <p>No films available.</p>
 </div>
-
-
-  <div *ngIf="films.length === 0">
-    <p>No films available.</p>
-  </div>
-  

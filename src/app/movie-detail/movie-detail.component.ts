@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Film } from '../models/film.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+interface FilmDetail {
+  id: string;
+  title: string;
+  duration: number;
+  description: string;
+  releaseDate: string;
+  poster: string;
+  director: string;
+  actorsCast: string[];
+  genreTag: string[];
+  path: string;
+}
 
 @Component({
   selector: 'app-movie-detail',
@@ -9,24 +21,29 @@ import { Film } from '../models/film.model';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  film: Film | undefined;
+  filmDetail: FilmDetail | null = null;
+  errorMessage: string = '';
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
-  
 
   ngOnInit() {
-    console.log(this.film);
-    this.getFilmDetails();
+    const filmId = this.route.snapshot.paramMap.get('id');
+    if (filmId !== null) {
+      this.getFilmDetail(filmId);
+    }
   }
 
-  getFilmDetails() {
-    const id = this.route.snapshot.params['id'];
-    this.http.get<Film>('http://localhost:8080/api/film/' + id).subscribe(
-      (response: Film) => {
-        this.film = response;
+  getFilmDetail(id: string) {
+    this.http.get<FilmDetail>('http://localhost:8080/api/film?id=' + id).subscribe(
+      (response: FilmDetail) => {
+        this.filmDetail = response;
       },
-      (error) => {
-        console.log('Error:', error);
+      (error: HttpErrorResponse) => {
+        if (error.status === 400) {
+          this.errorMessage = 'Film not found.';
+        } else {
+          this.errorMessage = 'An error occurred. Please try again later.';
+        }
       }
     );
   }

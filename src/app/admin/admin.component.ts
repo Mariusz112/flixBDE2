@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+interface Film {
+  title: string;
+  duration: number;
+  description: string;
+  releaseDate: string;
+  poster: string;
+  director: string;
+  actorsCast: string[];
+  path: string;
+  genreTag: string[];
+}
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  newFilm = {
+  newFilm: Film = {
     title: '',
     duration: 0,
     description: '',
@@ -23,30 +35,34 @@ export class AdminComponent {
 
   addFilm() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  
-    const requestBody = {
-      title: 'implement extensible schemas3',
-      duration: '7422',
-      description: 'Wonder each design moment quickly total turn. Tend claim listen short. Form half ok computer set.',
-      releaseDate: '2012-04-23',
-      poster: 'https://fwcdn.pl/fpo/10/45/1045/7563795.2.jpg',
-      director: 'Caroline Krueger',
-      actorsCast: ['Actor1', 'Actor2'],
-      path: './',
-      genreTag: ['Romance', 'Comedy']
+
+    const requestBody: Film = {
+      title: this.newFilm.title,
+      duration: this.newFilm.duration,
+      description: this.newFilm.description,
+      releaseDate: this.newFilm.releaseDate,
+      poster: this.newFilm.poster,
+      director: this.newFilm.director,
+      actorsCast: Array.isArray(this.newFilm.actorsCast)
+        ? this.newFilm.actorsCast.map((actor: string) => actor.trim())
+        : [],
+      path: this.newFilm.path,
+      genreTag: Array.isArray(this.newFilm.genreTag)
+        ? this.newFilm.genreTag.map((genre: string) => genre.trim())
+        : []
     };
-  
-    this.http.post('http://localhost:8080/api/film', JSON.stringify(requestBody), { headers }).subscribe(
+
+    this.http.post<Film>('http://localhost:8080/api/film', requestBody, { headers }).subscribe(
       (response) => {
-        console.log('Film added successfully!');
+        console.log('Film added successfully!', response);
         // Reset the form
         this.newFilm = {
           title: '',
-          director: '',
           duration: 0,
-          releaseDate: '',
           description: '',
+          releaseDate: '',
           poster: '',
+          director: '',
           actorsCast: [],
           genreTag: [],
           path: ''

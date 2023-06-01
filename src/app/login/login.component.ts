@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  message: string;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
-    console.log('LoginComponent constructor');
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+    this.message = '';
   }
 
   ngOnInit() {
-    console.log('LoginComponent ngOnInit');
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -27,18 +34,27 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = new FormData();
-    formData.append('email', this.loginForm.value.email);
-    formData.append('password', this.loginForm.value.password);
+    const loginData = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
 
-    this.http.post('/api/login', formData).subscribe(
-      (response) => {
-        console.log(response);
-        // handle successful response from server here
+    console.log('Submitting login form with data:', loginData);
+
+    this.http.post('http://localhost:8080/api/authentication/signin', loginData).subscribe(
+      (response: any) => {
+        console.log('Login response:', response);
+
+        this.authService.setUserSession(response);
+
+        this.message = 'Login successful!';
+
+        // Navigate to the profile page
+        this.router.navigateByUrl('/profile');
       },
       (error) => {
-        console.log(error);
-        // handle error response from server here
+        console.log('Login error:', error);
+        this.message = 'Invalid email or password.';
       }
     );
   }

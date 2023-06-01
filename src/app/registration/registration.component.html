@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Rejestracja użytkownika</title>
-	<link rel="stylesheet" type="text/css" href="registration.component.css">
-</head>
-<body>
-	<div class="register-box">
-		<h2>Rejestracja</h2>
-		<form>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Nazwa użytkownika</label>
-			</div>
-            <div class="user-box">
-				<input type="text" name="" required="">
-				<label>Email</label>
-			</div>
-            <div class="user-box">
-				<input type="text" name="" required="">
-				<label>Hasło</label>
-			</div>
-			<div class="user-box">
-				<input type="password" name="" required="">
-				<label>Powtórz hasło</label>
-			</div>
-			<a>Masz już konto? Zaloguj</a>
-			<div class="centerer">
-				<a class="register-button" href="#">
-					Zarejestruj się
-				</a>
-			</div>
-		</form>
-	</div>
-</body>
-</html>
+<div class="register-box">
+  <h2>Rejestracja</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+    
+
+    <div class="user-box">
+      <input type="text" formControlName="email" required>
+      <label>Email</label>
+    </div>
+    <div class="user-box">
+      <input type="password" formControlName="password" required>
+      <label>Hasło</label>
+    </div>
+    <div class="user-box">
+      <input type="password" formControlName="confirmPassword" required>
+      <label>Powtórz hasło</label>
+    </div>
+    <a routerLink="/login">Masz już konto? Zaloguj</a>
+    <div class="centerer">
+      <button type="submit" class="register-button">Zarejestruj się</button>
+    </div>
+  </form>
+  <div class="message" *ngIf="message">{{ message }}</div>
+</div>

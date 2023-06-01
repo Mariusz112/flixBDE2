@@ -1,1 +1,18 @@
+<div *ngIf="filmDetail" class="movie-detail">
+  <h2>{{ filmDetail.title }}</h2>
+  <div class="movie-info">
+    <div class="movie-poster">
+      <img [src]="filmDetail.poster" alt="Film Poster">
+    </div>
+    <h2>{{ filmDetail.title }}</h2>
+    <p>Duration: {{ filmDetail.duration }} minutes</p>
+    <p>Description: {{ filmDetail.description }}</p>
+    <p>Release Date: {{ filmDetail.releaseDate }}</p>
+    <img [src]="filmDetail.poster" alt="Film Poster" width="200">
+    <p>Director: {{ filmDetail.director }}</p>
+    <p>Actors Cast: {{ filmDetail.actorsCast.join(', ') }}</p>
+    <p>Genre: {{ filmDetail.genreTag.join(', ') }}</p>
+    <p>Path: {{ filmDetail.path }}</p>
+  </div>
+</div>
 test

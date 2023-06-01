@@ -1,34 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Film } from '../models/film.model';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
-})
-export class MovieDetailComponent implements OnInit {
-  film: Film | null = null;
-  error: string | null = null;
+import { MovieDetailComponent } from './movie-detail.component';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+describe('MovieDetailComponent', () => {
+  let component: MovieDetailComponent;
+  let fixture: ComponentFixture<MovieDetailComponent>;
 
-  ngOnInit() {
-    const filmId = this.route.snapshot.params['id'];
-    this.getFilmById(filmId);
-  }
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ MovieDetailComponent ]
+    })
+    .compileComponents();
 
-  getFilmById(id: string) {
-    this.http.get<Film>('http://localhost:8080/api/film/' + id).subscribe(
-      (response: Film) => {
-        this.film = response;
-        this.error = null;
-      },
-      (error) => {
-        this.error = 'Film not found';
-        console.log('Error:', error);
-      }
-    );
-  }
-}
+    fixture = TestBed.createComponent(MovieDetailComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

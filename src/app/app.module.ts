@@ -16,6 +16,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthInterceptor } from './auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { MovieComponent } from './movie/movie.component';
+import { AdminComponent } from './admin/admin.component';
 
 // Define routes for your application
 const appRoutes: Routes = [
@@ -32,7 +34,9 @@ const appRoutes: Routes = [
     Series1Component,
     EpisodeComponent,
     ForgotPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    MovieComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

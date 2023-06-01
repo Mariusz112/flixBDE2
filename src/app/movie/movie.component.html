@@ -1,0 +1,16 @@
+<div *ngIf="films.length > 0">
+    <h2>Movie List</h2>
+    <ul>
+      <li *ngFor="let film of films">
+        <!-- Display film information as per your requirements -->
+        <h3>{{ film.title }}</h3>
+        <p>{{ film.description }}</p>
+        <p>{{ film.releaseDate }}</p>
+        <!-- Add additional film properties you want to display -->
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="films.length === 0">
+    <p>No films available.</p>
+  </div>
+  

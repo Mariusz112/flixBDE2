@@ -1,0 +1,36 @@
+<form (ngSubmit)="addFilm()" #filmForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="newFilm.title" name="title">
+    </div>
+    <div class="form-group">
+      <label for="duration">Duration</label>
+      <input type="number" class="form-control" id="duration" required [(ngModel)]="newFilm.duration" name="duration">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" required [(ngModel)]="newFilm.description" name="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="releaseDate">Release Date</label>
+      <input type="date" class="form-control" id="releaseDate" required [(ngModel)]="newFilm.releaseDate" name="releaseDate">
+    </div>
+    <div class="form-group">
+      <label for="poster">Poster URL</label>
+      <input type="text" class="form-control" id="poster" required [(ngModel)]="newFilm.poster" name="poster">
+    </div>
+    <div class="form-group">
+      <label for="director">Director</label>
+      <input type="text" class="form-control" id="director" required [(ngModel)]="newFilm.director" name="director">
+    </div>
+    <div class="form-group">
+      <label for="actorsCast">Actors/Cast</label>
+      <input type="text" class="form-control" id="actorsCast" required [(ngModel)]="newFilm.actorsCast" name="actorsCast">
+    </div>
+    <div class="form-group">
+      <label for="genreTag">Genre</label>
+      <input type="text" class="form-control" id="genreTag" required [(ngModel)]="newFilm.genreTag" name="genreTag">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Film</button>
+  </form>
+  

@@ -7,6 +7,8 @@ import { EpisodeComponent } from './episode/episode.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component'; // Import the ProfileComponent
+import { MovieComponent } from './movie/movie.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent }, // Add the route for the ProfileComponent
+  { path: 'movie', component: MovieComponent },
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({

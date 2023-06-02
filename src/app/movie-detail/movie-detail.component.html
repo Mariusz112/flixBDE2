@@ -10,7 +10,8 @@
     </div>
     <p>Duration: {{ filmDetail.duration }} minutes</p>
     <p>Description: {{ filmDetail.description }}</p>
-    <p>Release Date: {{ filmDetail.releaseDate }}</p>
+    <p>Release Date: {{ filmDetail.releaseDate | slice:0:10 }}</p>
+
     <p>Director: {{ filmDetail.director }}</p>
     <p>Actors Cast: {{ filmDetail.actorsCast.join(', ') }}</p>
     <p>Genre: {{ filmDetail.genreTag.join(', ') }}</p>

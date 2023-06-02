@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface FilmDetail {
   id: string;
@@ -22,7 +22,6 @@ interface FilmDetail {
 })
 export class MovieDetailComponent implements OnInit {
   filmDetail: FilmDetail | null = null;
-  errorMessage: string = '';
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -34,16 +33,16 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getFilmDetail(id: string) {
-    this.http.get<FilmDetail>('http://localhost:8080/api/film?id=' + id).subscribe(
+    const url = 'http://localhost:8080/api/film/id';
+    const requestBody = { id: id };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.post<FilmDetail>(url, requestBody, { headers }).subscribe(
       (response: FilmDetail) => {
         this.filmDetail = response;
       },
-      (error: HttpErrorResponse) => {
-        if (error.status === 400) {
-          this.errorMessage = 'Film not found.';
-        } else {
-          this.errorMessage = 'An error occurred. Please try again later.';
-        }
+      (error) => {
+        console.log('Error:', error);
       }
     );
   }

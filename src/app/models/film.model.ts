@@ -7,6 +7,7 @@ export interface Film {
   releaseDate: string;
   description: string;
   poster: string;
-  actorsCast: string;
-  genreTag: string;
+  actorsCast: string[];
+  genreTag: string[]; // Update the type to string[]
+  path: string;
 }

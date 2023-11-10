@@ -1,6 +1,17 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Film } from '../models/film.model';
+
+interface Film {
+  title: string;
+  duration: number;
+  description: string;
+  releaseDate: string;
+  poster: string;
+  director: string;
+  actorsCast: string[];
+  path: string;
+  genreTag: string[];
+}
 
 @Component({
   selector: 'app-admin',
@@ -9,49 +20,52 @@ import { Film } from '../models/film.model';
 })
 export class AdminComponent {
   newFilm: Film = {
-    id: 0,
-    title: '0',
-    director: '',
-    genre: '',
+    title: '',
     duration: 0,
-    releaseDate: '',
     description: '',
+    releaseDate: '',
     poster: '',
-    actorsCast: '',
-    genreTag: ''
+    director: '',
+    actorsCast: [],
+    path: '',
+    genreTag: []
   };
 
   constructor(private http: HttpClient) {}
 
   addFilm() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  
-    const requestBody = {
-      title: 'implement extensible schemas',
-      duration: 7422,
-      description: 'Wonder each design moment quickly total turn. Tend claim listen short. Form half ok computer set.',
-      releaseDate: '2012-04-23',
-      poster: './',
-      director: 'Caroline Krueger',
-      actorsCast: ['Actor1', 'Actor2'],
-      genreTag: ['Romance', 'Comedy']
+
+    const requestBody: Film = {
+      title: this.newFilm.title,
+      duration: this.newFilm.duration,
+      description: this.newFilm.description,
+      releaseDate: this.newFilm.releaseDate,
+      poster: this.newFilm.poster,
+      director: this.newFilm.director,
+      actorsCast: Array.isArray(this.newFilm.actorsCast)
+        ? this.newFilm.actorsCast.map((actor: string) => actor.trim())
+        : [],
+      path: this.newFilm.path,
+      genreTag: Array.isArray(this.newFilm.genreTag)
+        ? this.newFilm.genreTag.map((genre: string) => genre.trim())
+        : []
     };
-  
-    this.http.post('http://localhost:8080/api/film', requestBody, { headers }).subscribe(
+
+    this.http.post<Film>('http://localhost:8080/api/film', requestBody, { headers }).subscribe(
       (response) => {
-        console.log('Film added successfully!');
+        console.log('Film added successfully!', response);
         // Reset the form
         this.newFilm = {
-          id: 0,
-          title: '0',
-          director: '',
-          genre: '',
+          title: '',
           duration: 0,
-          releaseDate: '',
           description: '',
+          releaseDate: '',
           poster: '',
-          actorsCast: '',
-          genreTag: ''
+          director: '',
+          actorsCast: [],
+          genreTag: [],
+          path: ''
         };
       },
       (error) => {

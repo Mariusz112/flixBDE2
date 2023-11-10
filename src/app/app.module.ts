@@ -18,6 +18,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieComponent } from './movie/movie.component';
 import { AdminComponent } from './admin/admin.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 // Define routes for your application
 const appRoutes: Routes = [
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     ForgotPasswordComponent,
     ProfileComponent,
     MovieComponent,
-    AdminComponent
+    AdminComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

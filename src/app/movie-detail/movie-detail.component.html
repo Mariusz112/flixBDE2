@@ -1,0 +1,19 @@
+<div *ngIf="filmDetail" class="movie-detail">
+  <h2>{{ filmDetail.title }}</h2>
+  <div class="movie-info">
+
+    <div class="movie-player">
+      <video controls>
+        <source [src]="filmDetail.path" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p>Duration: {{ filmDetail.duration }} minutes</p>
+    <p>Description: {{ filmDetail.description }}</p>
+    <p>Release Date: {{ filmDetail.releaseDate | slice:0:10 }}</p>
+
+    <p>Director: {{ filmDetail.director }}</p>
+    <p>Actors Cast: {{ filmDetail.actorsCast.join(', ') }}</p>
+    <p>Genre: {{ filmDetail.genreTag.join(', ') }}</p>
+  </div>
+</div>
